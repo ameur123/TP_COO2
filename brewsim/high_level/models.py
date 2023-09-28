@@ -70,5 +70,5 @@ class QuantiteIngredient(models.Model):
         return f"{self.quantite} de {self.ingredient}"
         
     def __str__(self):
-        return Prix.objets.get(Departement_numero=Departement,ingredients=self,ingredient),Prix * self,quantite 
+        return Prix.objets.get(Departement_numero=Departement,ingredients=self,ingredient).Prix * self,quantite 
 
