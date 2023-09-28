@@ -6,6 +6,10 @@ class Departement(models.Model):
 
     def __str__(self):
         return f"Departement {self.numero}"
+    
+    def cost(self):   
+        nombre_de_departements = Departement.objects.count()
+        
 
 class Recette(models.Model):
     nom = models.CharField(max_length=100)
