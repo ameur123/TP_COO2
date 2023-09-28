@@ -36,9 +36,16 @@ class Usine(models.Model):
     machines = models.ManyToManyField('Machine')
     stock = models.ForeignKey('QuantiteIngredient', on_delete=models.PROTECT)
     recette_biere = models.ForeignKey(Recette, on_delete=models.PROTECT)
+    
 
     def __str__(self):
         return f"Usine {self.id}"
+        
+    def calculate_charge(self):
+        # Calcul du prix de charge de l'usine
+        prix_machines = sum(machine.get_prix_machine() for machine in self.machines.all())
+        prix_stock = self.stock.get_prix_ingredient()
+        return prix_machines + prix_stock
 
 class Machine(models.Model):
     nom = models.CharField(max_length=100)
