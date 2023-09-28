@@ -1,0 +1,32 @@
+from django.db import models
+
+# Create your models here.
+
+class Departement(models.Model):
+    nom = models.CharField(max_length=250)
+    prix_m2 = models.IntegerField();
+
+class Usine(models.Model):
+	departement = models.ForeignKey(Departement)
+	taille = models.IntegerField();
+	machine = models.ForeignKey(Machine)
+	recette = models.ForeignKey(Recette)
+	stock = models.ForeignKey(Qantite_ingredient)
+	
+class Machine(models.Model):
+	nom = models.CharField(max_length=250)
+	prix = models.IntegerField()
+    
+class Action(models.Model):
+	machine = models.CharField(max_length=250)
+	commande = models.CharField(max_length=250)
+	duree = models.CharField(max_length=250)
+	ingredients = models.ForeignKey(Recette)
+	action = models.ForeignKey(Action)
+	
+class Recette(models.Model):
+
+
+class Qantite_ingredient(models.Model):
+
+
