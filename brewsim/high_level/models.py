@@ -70,6 +70,8 @@ class Prix(models.Model):
     def __str__(self):
         return f"{self.ingredient} dans le {self.departement} {self.prix} euros/kg"
 
+
+
 #Création des objets pour chaque classe
 
 departement=Departement()
