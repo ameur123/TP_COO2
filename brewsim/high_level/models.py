@@ -43,23 +43,23 @@ class Recette(models.Model):
         def __str__(self):
                 return f"{self.nom} {self.action}"
 
-               
- class Usine(models.Model):
-    departement = models.ForeignKey(Departement, on_delete=models.PROTECT)
-    taille = models.IntegerField()
-    machines = models.ManyToManyField(Machine)
-    recettes = models.ManyToManyField(Recette)
-    stocks = models.ManyToManyField(QuantiteIngredient)
+class Usine(models.Model):
+        departement = models.ForeignKey(Departement, on_delete=models.PROTECT)
+        taille = models.IntegerField()
+        machines = models.ManyToManyField(Machine)
+        recettes = models.ManyToManyField(Recette)
+        stocks = models.ManyToManyField(QuantiteIngredient)
+    	def __str__(self):
+        	return f"Usine de {self.taille} m2"
 
-    def __str__(self):
-        return f"Usine de {self.taille} m2"
+    	def costs(self):
+        	prix_usine = self.departement.prixm2 * self.taille
 
-    def costs(self):
-        prix_usine = self.departement.prixm2 * self.taille
-
-        prix_machine = 0
-        for machine in self.machines.all():
-            prix_machine += machine.prix
+        	prix_machine = 0
+        	for machine in self.machines.all():
+            	prix_machine += machine.prix
+            	
+            	
 
  
                 
