@@ -60,12 +60,15 @@ class Usine(models.Model):
                 return (self.taille * self.departement.prixparMcarre ) + (self.costMachines())
 
 
+                
 class Prix(models.Model):
-        ingredient = models.ForeignKey(Ingredient, on_delete=models.PROTECT)
-        departement = models.ForeignKey(Departement, on_delete=models.PROTECT)
-        prix = models.IntegerField()
-        def __str__(self):
-                return f"{self.ingredient} {self.departement} {self.prix}"
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.PROTECT)
+    departement = models.ForeignKey(Departement, on_delete=models.PROTECT)
+
+    prix = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.ingredient} dans le {self.departement} {self.prix} euros/kg"
 
 #Création des objets pour chaque classe
 
