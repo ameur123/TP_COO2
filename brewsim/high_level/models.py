@@ -58,8 +58,7 @@ class Usine(models.Model):
                 return f"{self.departement} {self.taille} {self.machines} {self.recettes} {self.stocks}"
         def __cost__(self):
                 return (self.taille * self.departement.prixparMcarre ) + (self.costMachines())
-
-
+               
                 
 class Prix(models.Model):
     ingredient = models.ForeignKey(Ingredient, on_delete=models.PROTECT)
