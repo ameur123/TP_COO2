@@ -70,11 +70,7 @@ class Prix(models.Model):
     def __str__(self):
         return f"{self.ingredient} dans le {self.departement} {self.prix} euros/kg"
 
-class Departement(models.Model):
-        numero = models.IntegerField()
-        prixparMcarre = models.IntegerField()
-        def __str__(self):
-                return f"{self.numero} {self.prixparMcarre}"
+
 
 #Création des objets pour chaque classe
 
