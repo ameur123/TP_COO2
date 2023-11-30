@@ -24,7 +24,7 @@ from django.urls import path
 
 from high_level.views import DepartementDetailView
 
-urlpatterns = [
+#urlpatterns = [
    # path('machine/<int:pk>/', MachineDetailView.as_view(), name='machine-detail'),
-    path('departement/<int:pk>/', DepartementDetailView.as_view(), name='departement-detail'),
-]
+   # path('departement/<int:pk>/', DepartementDetailView.as_view(), name='departement-detail'),
+#]
