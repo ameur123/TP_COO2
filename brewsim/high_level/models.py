@@ -12,7 +12,9 @@ class Departement(models.Model):
         		"prixparMcarre" : self.prixparMcarre,      
                		 }
 
-
+   	def json_extended(self):
+        return self.json()
+        
 class Machine(models.Model):
         nom = models.CharField(max_length=100)
         prix = models.IntegerField()
@@ -25,7 +27,8 @@ class Machine(models.Model):
         		"nom" : self.nom,
         		"prix" : self.prix,      
                		 }            
-                
+	def json_extended(self):
+        return self.json()
 
 class Ingredient(models.Model):
         nom = models.CharField(max_length=100)
@@ -34,7 +37,9 @@ class Ingredient(models.Model):
         def json(self):
                 return {
         		"nom" : self.nom,    
-               		 }                
+               		 }    
+	def json_extended(self):
+        return self.json()            
 
 class QuantiteIngredient(models.Model):
         ingredient = models.ForeignKey(Ingredient, on_delete=models.PROTECT)
@@ -48,7 +53,8 @@ class QuantiteIngredient(models.Model):
         		"ingredient" : self.ingredient, 
         		"quantite" : self.quantite,  
                		 }                  
-                
+	def json_extended(self):
+        return self.json()
 
 class Action(models.Model):
         machine = models.ForeignKey(Machine, on_delete=models.PROTECT)
@@ -66,7 +72,8 @@ class Action(models.Model):
         		"ingredients" : self.ingredients,        		
          		"action" : self.action,        		  
                		 }                 
-                
+	def json_extended(self):
+        return self.json()
 
 class Recette(models.Model):
         nom = models.CharField(max_length=100)
@@ -77,7 +84,9 @@ class Recette(models.Model):
                  return {
         		"nom" : self.nom,
         		"action" : self.action,     		  
-               		 }                  
+               		 }
+	def json_extended(self):
+        return self.json()                  
 
 class Usine(models.Model):
         departement = models.ForeignKey(Departement, on_delete=models.PROTECT)
@@ -102,7 +111,8 @@ class Usine(models.Model):
         		"recettes" : self.recettes,        		
          		"stocks" : self.stocks,        		  
                		 }                
- 
+	def json_extended(self):
+        return self.json() 
                 
 class Prix(models.Model):
     ingredient = models.ForeignKey(Ingredient, on_delete=models.PROTECT)
@@ -118,7 +128,8 @@ class Prix(models.Model):
         		"departement" : self.departement,
         		"prix" : self.prix,    		  
                		 }  
-
+	def json_extended(self):
+        return self.json()
 
 #Création des objets pour chaque classe
 
