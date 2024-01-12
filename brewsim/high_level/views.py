@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from json import dumps
 from .models import Departement, Machine, Ingredient, QuantiteIngredient, Action, Recette, Usine, Prix
 
+
 class DepartementDetailView(DetailView):
     model = Departement
     template_name = 'departement_detail.html'
@@ -31,7 +32,14 @@ class IngredientDetailView(DetailView):
         response_kwargs.setdefault("content_type", self.content_type)
         return HttpResponse(dumps(self.object.json()))
 
-# Répétez le processus pour les autres modèles...
+class QuantiteIngredientDetailView(DetailView):
+    model = QuantiteIngredient
+    template_name = 'quantite_ingredient_detail.html'
+    context_object_name = 'qantite_ingredient'
+
+    def render_to_response(self, context, **response_kwargs):
+        response_kwargs.setdefault("content_type", self.content_type)
+        return HttpResponse(dumps(self.object.json()))
 
 class UsineDetailView(DetailView):
     model = Usine
@@ -50,4 +58,22 @@ class PrixDetailView(DetailView):
     def render_to_response(self, context, **response_kwargs):
         response_kwargs.setdefault("content_type", self.content_type)
         return HttpResponse(dumps(self.object.json()))
+class ActionDetailView(DetailView):
+    model = Action
+    template_name = 'action_detail.html'
+    context_object_name = 'action'
+
+    def render_to_response(self, context, **response_kwargs):
+        response_kwargs.setdefault("content_type", self.content_type)
+        return HttpResponse(dumps(self.object.json()))
+
+class RecetteDetailView(DetailView):
+    model = Recette
+    template_name = 'recette_detail.html'
+    context_object_name = 'recette'
+
+    def render_to_response(self, context, **response_kwargs):
+        response_kwargs.setdefault("content_type", self.content_type)
+        return HttpResponse(dumps(self.object.json()))
+
 
